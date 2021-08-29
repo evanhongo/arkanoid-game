@@ -3,6 +3,7 @@ const path = require("path");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
@@ -130,6 +131,12 @@ const config = {
       },
       filename: "index.html",
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "src/favicon.ico", to: "favicon.ico" },
+        { from: "src/asset", to: "asset" },
+      ]
+    })
   ]
 };
 
