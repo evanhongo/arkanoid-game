@@ -5,7 +5,7 @@
       true,
       {
         "ignore": ["rem"],
-        "ignorePartialSupport": true
+        "ignorePartialSupport": true        
       }
     ]
   }

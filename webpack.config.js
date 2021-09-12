@@ -5,8 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const StylelintPlugin = require("stylelint-webpack-plugin");
 
 //thread-loader
@@ -34,7 +33,7 @@ const config = {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   devServer: {
-    static: path.resolve(__dirname, "src"),
+    contentBase: path.resolve(__dirname, "src"),
     port: 3000,
   },
   // optimization: {
@@ -74,6 +73,7 @@ const config = {
             loader: "thread-loader",
             options: cssWorkerPool,
           },
+          "css-modules-typescript-loader",
           {
             loader: "css-loader",
             options: {
@@ -83,17 +83,17 @@ const config = {
               // },
             }
           },
-          // {
-          //   loader: "postcss-loader",
-          //   options: {
-          //     postcssOptions: {
-          //       plugins: [
-          //         "postcss-preset-env"
-          //       ],
-          //     },
-          //   }
-          // },
-          // "sass-loader"
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  "postcss-preset-env"
+                ],
+              },
+            }
+          },
+          "sass-loader"
         ]
       },
       {
@@ -133,8 +133,7 @@ const config = {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: "src/favicon.ico", to: "favicon.ico" },
-        { from: "src/asset", to: "asset" },
+        { from: "src/favicon.ico", to: "favicon.ico" }
       ]
     })
   ]
