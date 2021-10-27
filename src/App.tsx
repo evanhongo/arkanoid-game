@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from "react";
-import useInterval from "@/util/useInterval";
 import { useImmer } from "use-immer";
-import "./css/index.scss";
-import paddleImg from "./img/paddle.png";
-import ballImg from "./img/ball.png";
+import { useInterval } from "@evanhongo/react-custom-hook";
 import { FancyText } from "@evanhongo/react-custom-component";
+import "@/css/index.scss";
+import paddleImg from "@/img/paddle.png";
+import ballImg from "@/img/ball.png";
 
 const CANVAS_WIDTH = 1200;
 const CANVAS_HEIGHT = 700;
@@ -15,7 +15,7 @@ const BALL_HEIGHT = 20;
 const BALL_DX = 10;
 
 export default function App() {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [state, updateState] = useImmer({
     paddleX: 540,
     ball: { x: 590, y: 630, dx: BALL_DX, dy: -5 }

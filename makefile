@@ -5,9 +5,9 @@ all: build
 
 build: clean
 	@echo "Build..."
-	npm run build
+	yarn build
 
 clean:
 	@echo "Clean..."
-	-rd /s /q build
-	-rm -rf build
+	-rd /s /q dist
+	-rm -rf dist

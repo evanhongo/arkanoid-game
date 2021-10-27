@@ -1,27 +1,26 @@
-{ 
-  "include": [
-    "src"
-  ],
+{
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./src/*",
-      ],
+        "src/*",
+      ]
     },
-    "plugins": [{ "name": "typescript-plugin-css-modules" }],
-    "module": "es6", // generate ES modules
-    "target": "es5", // target ES5 API
-    "jsx": "react", // compile JSX to React.createElement statements for browser
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": true,
+    "skipLibCheck": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
     "strict": false,
-    "strictNullChecks": false,
-    "noEmit": false,
-    "declaration": false,
-    "moduleResolution": "node",
-    "allowJs": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["./src"]
 }
